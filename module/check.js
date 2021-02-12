@@ -132,6 +132,9 @@ export class CoC7Check {
 	}
 
 	get passed(){
+		console.log("succesThreshold: ", this.succesThreshold)
+		console.log("this.dices.total: ", this.dices.total)
+		console.log("this.isCritical: ", this.isCritical)
 		return this.succesThreshold <= this.dices.total || this.isCritical;
 	}
 
