@@ -68,30 +68,30 @@ export class CoC7Check {
 	}
 
 	get criticalThreshold(){
-		return 1;
+		return 100;
 	}
 
 	get regularThreshold(){
 		if( this.rawValue)
 		{
-			if( this.rawValue >= 100) return 99;
+			if( this.rawValue <= 1) return 1;
 			return parseInt( this.rawValue);
 		}
 		return null;
 	}
 
 	get hardThreshold(){
-		if(this.rawValue) return Math.floor( this.rawValue / 2);
+		if(this.rawValue) return Math.floor( 100-(this.rawValue / 2));
 		return null;
 	}
 
 	get extremeThreshold(){
-		if(this.rawValue) return Math.floor( this.rawValue / 5);
+		if(this.rawValue) return Math.floor( 100-(this.rawValue / 5));
 		return null;
 	}
 
 	get fumbleThreshold(){
-		if(this.rawValue) return this.rawValue < 50 ? 96 : 100;
+		if(this.rawValue) return this.rawValue >= 50 ? 4 : 1;
 		return null;
 	}
 
@@ -124,15 +124,15 @@ export class CoC7Check {
 	}
 
 	get isFumble(){
-		return this.dices.total >= this.fumbleThreshold;
+		return this.dices.total <= this.fumbleThreshold;
 	}
 
 	get isCritical(){
-		return this.dices.total == 1;
+		return this.dices.total == 100;
 	}
 
 	get passed(){
-		return this.succesThreshold >= this.dices.total || this.isCritical;
+		return this.succesThreshold <= this.dices.total || this.isCritical;
 	}
 
 	get failed(){
@@ -140,12 +140,12 @@ export class CoC7Check {
 	}
 
 	get hasBonus(){
-		if( this.diceModifier && this.diceModifier > 0) return true;
+		if( this.diceModifier && this.diceModifier < 0) return true;
 		return false;
 	}
 
 	get hasPenalty(){
-		if( this.diceModifier && this.diceModifier < 0) return true;
+		if( this.diceModifier && this.diceModifier > 0) return true;
 		return false;
 	}
 
