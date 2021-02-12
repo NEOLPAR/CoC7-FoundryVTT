@@ -132,9 +132,6 @@ export class CoC7Check {
 	}
 
 	get passed(){
-		console.log("succesThreshold: ", this.succesThreshold)
-		console.log("this.dices.total: ", this.dices.total)
-		console.log("this.isCritical: ", this.isCritical)
 		return this.succesThreshold <= this.dices.total || this.isCritical;
 	}
 
@@ -242,9 +239,6 @@ export class CoC7Check {
 
 	get successLevelIcons(){
 		if( this.unknownDifficulty) return null;
-		console.log("successLevelIcons: ", this.successLevel >= this.difficulty)
-		console.log("this.successLevel:", this.successLevel)
-		console.log("this.difficulty: ", this.difficulty)
 		if( this.successLevel >= this.difficulty){
 			let icons = [];
 			for (let index = 0; index < (this.successLevel - this.difficulty + 1); index++) {
