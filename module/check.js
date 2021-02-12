@@ -242,6 +242,9 @@ export class CoC7Check {
 
 	get successLevelIcons(){
 		if( this.unknownDifficulty) return null;
+		console.log("successLevelIcons: ", this.successLevel >= this.difficulty)
+		console.log("this.successLevel:", this.successLevel)
+		console.log("this.difficulty: ", this.difficulty)
 		if( this.successLevel >= this.difficulty){
 			let icons = [];
 			for (let index = 0; index < (this.successLevel - this.difficulty + 1); index++) {
@@ -505,7 +508,7 @@ export class CoC7Check {
 		else this.successRequired = game.i18n.format('CoC7.SuccessRequired', {successRequired : this.difficultyString});
 
 
-		if (this.dices.total == 1){
+		if (this.dices.total == 100){
 			this.successLevel = CoC7Check.successLevel.critical;
 		}
 		if( !this.luckSpent && !this.isUnknown){
