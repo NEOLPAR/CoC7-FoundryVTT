@@ -548,29 +548,29 @@ export class CoC7Check {
 				// Can't spend luck on pushed rolls.
 				if( !this.pushing && 'lck' != this.attribute && 'san' != this.attribute){
 
-					if( this.unknownDifficulty && this.dices.total > this.regularThreshold){
+					if( this.unknownDifficulty && this.dices.total < this.regularThreshold){
 						let nextLevel = {};
 						nextLevel.difficultyName = game.i18n.localize('CoC7.RegularDifficulty');
 						nextLevel.difficulty = CoC7Check.difficultyLevel.regular;
-						nextLevel.luckToSpend = this.dices.total - this.regularThreshold;
+						nextLevel.luckToSpend = this.regularThreshold - this.dices.total;
 						nextLevel.hasEnoughLuck = (nextLevel.luckToSpend <= this.actor.luck);
 						if (nextLevel.luckToSpend <= this.actor.luck) this.increaseSuccess.push(nextLevel);
 					}
 
-					if(this.difficulty <= CoC7Check.difficultyLevel.regular  && this.dices.total > this.hardThreshold){
+					if(this.difficulty <= CoC7Check.difficultyLevel.regular  && this.dices.total < this.hardThreshold){
 						let nextLevel = {};
 						nextLevel.difficultyName = game.i18n.localize('CoC7.HardDifficulty');
 						nextLevel.difficulty = CoC7Check.difficultyLevel.hard;
-						nextLevel.luckToSpend = this.dices.total - this.hardThreshold;
+						nextLevel.luckToSpend = his.regularThreshold - this.dices.total;
 						nextLevel.hasEnoughLuck = (nextLevel.luckToSpend <= this.actor.luck);
 						if (nextLevel.luckToSpend <= this.actor.luck) this.increaseSuccess.push(nextLevel);
 					}
 
-					if(this.difficulty <= CoC7Check.difficultyLevel.hard  && this.dices.total > this.extremeThreshold){
+					if(this.difficulty <= CoC7Check.difficultyLevel.hard  && this.dices.total < this.extremeThreshold){
 						let nextLevel = {};
 						nextLevel.difficultyName = game.i18n.localize('CoC7.ExtremeDifficulty');
 						nextLevel.difficulty = CoC7Check.difficultyLevel.extreme;
-						nextLevel.luckToSpend = this.dices.total - this.extremeThreshold;
+						nextLevel.luckToSpend = his.regularThreshold - this.dices.total;
 						nextLevel.hasEnoughLuck = (nextLevel.luckToSpend <= this.actor.luck);
 						if (nextLevel.luckToSpend <= this.actor.luck) this.increaseSuccess.push(nextLevel);
 					}
