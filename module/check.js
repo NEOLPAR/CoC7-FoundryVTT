@@ -471,12 +471,12 @@ export class CoC7Check {
 		}
 
 		if( ! this.luckSpent){
-			if( this.dices.total <= this.rawValue) this.successLevel = CoC7Check.successLevel.regular;
-			if( this.dices.total <= this.hardThreshold) this.successLevel = CoC7Check.successLevel.hard;
-			if( this.dices.total <= this.extremeThreshold) this.successLevel = CoC7Check.successLevel.extreme;
-			if( this.dices.total > this.rawValue) this.successLevel = CoC7Check.successLevel.failure;
-			if( 1 == this.dices.total) this.successLevel = CoC7Check.successLevel.critical;
-			if( this.fumbleThreshold <= this.dices.total) this.successLevel = CoC7Check.successLevel.fumble;
+			if( this.dices.total >= this.rawValue) this.successLevel = CoC7Check.successLevel.regular;
+			if( this.dices.total >= this.hardThreshold) this.successLevel = CoC7Check.successLevel.hard;
+			if( this.dices.total >= this.extremeThreshold) this.successLevel = CoC7Check.successLevel.extreme;
+			if( this.dices.total < this.rawValue) this.successLevel = CoC7Check.successLevel.failure;
+			if( 100 == this.dices.total) this.successLevel = CoC7Check.successLevel.critical;
+			if( this.fumbleThreshold >= this.dices.total) this.successLevel = CoC7Check.successLevel.fumble;
 		}
 
 		switch (this.successLevel) {
