@@ -1,3 +1,12 @@
+This is a modification in the dice system to success with high values instead of low values.
+
+
+
+
+
+
+
+
 # My (Unofficial) Call of Cthulhu implementation for Foundry VTT
 
 My (Unofficial) implementation of the call of Cthulhu for foundry-vtt  
