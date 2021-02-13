@@ -753,15 +753,15 @@ export class CoC7Check {
 	
 	forceSuccessLevel( successLevel){
 		let high, low;
-		if( CoC7Check.successLevel.fumble == successLevel)	{ high = 100; low = this.fumbleThreshold - 1;}
+		if( CoC7Check.successLevel.fumble == successLevel)	{ high = this.fumbleThreshold - 1; low = 1;}
 		if( CoC7Check.successLevel.failure == successLevel) {
-			if( this.regularThreshold == (this.fumbleThreshold - 1)){ high = 100;}
-			else high = this.fumbleThreshold - 1;
-			low= this.regularThreshold;}
-		if( CoC7Check.successLevel.regular == successLevel) { high = this.regularThreshold; low= this.hardThreshold;}
-		if( CoC7Check.successLevel.hard == successLevel) { high = this.hardThreshold; low=this.extremeThreshold;}
-		if( CoC7Check.successLevel.extreme == successLevel) { high =this.extremeThreshold; low=1;}
-		if( CoC7Check.successLevel.critical == successLevel) { high =1; low=0;}
+			if( this.regularThreshold == (this.fumbleThreshold - 1)){ high = 1;}
+			else high = this.regularThreshold;
+			low= this.fumbleThreshold - 1;}
+		if( CoC7Check.successLevel.regular == successLevel) { high = this.hardThreshold; low= this.regularThreshold;}
+		if( CoC7Check.successLevel.hard == successLevel) { high = this.extremeThreshold; low=this.hardThreshold;}
+		if( CoC7Check.successLevel.extreme == successLevel) { high =100; low=this.extremeThreshold;}
+		if( CoC7Check.successLevel.critical == successLevel) { high =100; low=99;}
 		if( high == low) low--; 
 		if( 0 == high) high = this.fumbleThreshold - 1;
 		this._forceCheck( high, low);
@@ -772,23 +772,23 @@ export class CoC7Check {
 		let high, low;
 		if( CoC7Check.successLevel.fumble == this.successLevel) { 
 			high = this.fumbleThreshold - 1;
-			if( this.regularThreshold == this.fumbleThreshold - 1) low = this.hardThreshold;
-			else low = this.regularThreshold; }
-		if( CoC7Check.successLevel.failure == this.successLevel) { high = this.regularThreshold; low = this.hardThreshold;}
-		if( CoC7Check.successLevel.regular == this.successLevel) { high = this.hardThreshold; low = this.extremeThreshold;}
-		if( CoC7Check.successLevel.hard == this.successLevel) { high = this.extremeThreshold; low = this.criticalThreshold;}
-		if( CoC7Check.successLevel.extreme == this.successLevel) { high = this.criticalThreshold; low = 0;}
+			if( this.regularThreshold == this.fumbleThreshold - 1) low = this.regularThreshold;
+			else low = this.hardThreshold; }
+		if( CoC7Check.successLevel.failure == this.successLevel) { high = this.hardThreshold; low = this.regularThreshold;}
+		if( CoC7Check.successLevel.regular == this.successLevel) { high = this.extremeThreshold; low = this.hardThreshold;}
+		if( CoC7Check.successLevel.hard == this.successLevel) { high = this.criticalThreshold; low = this.extremeThreshold;}
+		if( CoC7Check.successLevel.extreme == this.successLevel) { high = 100; low = this.criticalThreshold;}
 		if( high == low) low--; 
 		this._forceCheck( high, low);
 	}
 
 	decreaseSuccessLevel(){
 		let high, low;
-		if( CoC7Check.successLevel.failure == this.successLevel) { high = 100; low = this.fumbleThreshold - 1;}
-		if( CoC7Check.successLevel.regular == this.successLevel) { high = this.fumbleThreshold - 1; low = this.regularThreshold;}
-		if( CoC7Check.successLevel.hard == this.successLevel) { high = this.regularThreshold; low = this.hardThreshold;}
-		if( CoC7Check.successLevel.extreme == this.successLevel) { high = this.hardThreshold; low = this.extremeThreshold;}
-		if( CoC7Check.successLevel.critical == this.successLevel) { high = this.extremeThreshold; low = 1;}
+		if( CoC7Check.successLevel.failure == this.successLevel) { high = this.fumbleThreshold - 1; low = 1;}
+		if( CoC7Check.successLevel.regular == this.successLevel) { high = this.regularThreshold; low = this.fumbleThreshold - 1;}
+		if( CoC7Check.successLevel.hard == this.successLevel) { high = this.hardThreshold; low = this.regularThreshold;}
+		if( CoC7Check.successLevel.extreme == this.successLevel) { high = this.extremeThreshold; low = this.hardThreshold;}
+		if( CoC7Check.successLevel.critical == this.successLevel) { high = 100; low = this.extremeThreshold;}
 		if( 0 == high) high = this.fumbleThreshold - 1;
 		this._forceCheck( high, low);
 	}
