@@ -561,7 +561,7 @@ export class CoC7Check {
 						let nextLevel = {};
 						nextLevel.difficultyName = game.i18n.localize('CoC7.HardDifficulty');
 						nextLevel.difficulty = CoC7Check.difficultyLevel.hard;
-						nextLevel.luckToSpend = his.regularThreshold - this.dices.total;
+						nextLevel.luckToSpend = this.regularThreshold - this.dices.total;
 						nextLevel.hasEnoughLuck = (nextLevel.luckToSpend <= this.actor.luck);
 						if (nextLevel.luckToSpend <= this.actor.luck) this.increaseSuccess.push(nextLevel);
 					}
@@ -570,7 +570,7 @@ export class CoC7Check {
 						let nextLevel = {};
 						nextLevel.difficultyName = game.i18n.localize('CoC7.ExtremeDifficulty');
 						nextLevel.difficulty = CoC7Check.difficultyLevel.extreme;
-						nextLevel.luckToSpend = his.regularThreshold - this.dices.total;
+						nextLevel.luckToSpend = this.regularThreshold - this.dices.total;
 						nextLevel.hasEnoughLuck = (nextLevel.luckToSpend <= this.actor.luck);
 						if (nextLevel.luckToSpend <= this.actor.luck) this.increaseSuccess.push(nextLevel);
 					}
