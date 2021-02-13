@@ -533,7 +533,7 @@ export class CoC7Check {
 		if( !this.denyLuck){
 			if( !this.luckSpent && !this.passed && !this.isFumble && this.difficulty!=CoC7Check.difficultyLevel.critical && !this.unknownDifficulty) {
 				if( this.skill || this.characteristic){
-					let luckNeeded = this.dices.total - this.succesThreshold;
+					let luckNeeded = this.succesThreshold - this.dices.total;
 					if( this.actor.luck > luckNeeded){
 						this.hasEnoughLuck = true;
 						this.luckNeeded = luckNeeded;
